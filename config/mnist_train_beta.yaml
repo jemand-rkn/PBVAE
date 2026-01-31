@@ -10,15 +10,15 @@ resume: null
 test: False
 nosave: False
 prior_init: normal  # normal, zero
-train_prior: True
+train_prior: False
 init_weights_with_prior: True  # Only works when train_prior is True
 test_weight_std: null
 
 alpha: 1
-beta: 1
+beta: 0.01
 delta: 0.05
-kl_penalty: 0.0001
-# kl_penalty: 1
+# kl_penalty: 0.0001
+kl_penalty: 1
 p_min: 5e-3
 loss_range: null
 
@@ -36,7 +36,7 @@ pz_config:
 device: cuda:3
 dataset: mnist
 binarize: False
-validate: null  # True if type not in ["classic", "quad"]
+validate: True  # True if type not in ["classic", "quad"]
 prior_split: 0.5
 
 train_batch_size: 100
@@ -46,10 +46,10 @@ final_test_batch_size: 20
 
 train_config:
     prior_std: 0.01
-    max_epochs: 1000
+    max_epochs: 1500
     lr: 1e-3
-    type: quad  # "beta-vae", "alpha-vae", "classic", "quad"
-    pacbayes: True  # True if type in ["classic", "quad"]
+    type: beta-vae  # "beta-vae", "alpha-vae", "classic", "quad"
+    pacbayes: null  # True if type in ["classic", "quad"]
 
 train_prior_config:
     max_epochs: 500

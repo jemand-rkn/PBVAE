@@ -10,7 +10,7 @@ resume: null
 test: False
 nosave: False
 prior_init: normal  # normal, zero
-train_prior: True
+train_prior: False
 init_weights_with_prior: True  # Only works when train_prior is True
 test_weight_std: null
 
@@ -46,7 +46,7 @@ final_test_batch_size: 20
 
 train_config:
     prior_std: 0.01
-    max_epochs: 1000
+    max_epochs: 1500
     lr: 1e-3
     type: quad  # "beta-vae", "alpha-vae", "classic", "quad"
     pacbayes: True  # True if type in ["classic", "quad"]
