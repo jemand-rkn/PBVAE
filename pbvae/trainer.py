@@ -3,6 +3,7 @@ from functools import partial
 import json
 from copy import deepcopy
 from tqdm import tqdm
+from omegaconf import OmegaConf
 
 import numpy as np
 import torch
@@ -108,7 +109,7 @@ class Trainer:
             wandb.init(
                 project="pbvae",
                 name=self.run_name,
-                config=self.config,
+                config=OmegaConf.to_container(self.config, resolve=True),
                 tags=[self.config["dataset"], self.config["train_config"]["type"], self.config["net_type"]],
                 resume="allow",
                 id=id
@@ -318,9 +319,9 @@ class Trainer:
         self.model.eval()
         self.model.set_resample_network(False)  # Random weight but tester only resamples every iteration
 
-        # self.tester.run(self.train_loader)
-        # train_test_results = deepcopy(self.tester.state.metrics)
-        # print(json.dumps(train_test_results))
+        self.tester.run(self.train_loader)
+        train_test_results = deepcopy(self.tester.state.metrics)
+        print(json.dumps(train_test_results))
 
         self.tester.run(self.test_loader)
         test_test_results = deepcopy(self.tester.state.metrics)

@@ -1,7 +1,7 @@
 defaults:
-  - launcher: slurm
+#   - launcher: local
   - globals
-  - override hydra/launcher: submitit_slurm
+#   - override hydra/launcher: submitit_slurm
 
 name: mnist_train
 run: 0
@@ -44,7 +44,7 @@ test_batch_size: 100
 final_test_batch_size: 20
 
 train_config:
-    prior_std: 0.03
+    prior_std: 0.01
     max_epochs: 1000
     lr: 1e-3
     type: quad  # "beta-vae", "alpha-vae", "classic", "quad"
