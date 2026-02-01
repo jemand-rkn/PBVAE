@@ -108,9 +108,10 @@ class Trainer:
 
             wandb.init(
                 project="pbvae",
+                group="report",
                 name=self.run_name,
                 config=OmegaConf.to_container(self.config, resolve=True),
-                tags=[self.config["dataset"], self.config["train_config"]["type"], self.config["net_type"]],
+                tags=[str(self.config["beta"]), self.config["train_config"]["type"], self.config["net_type"]],
                 resume="allow",
                 id=id
             )

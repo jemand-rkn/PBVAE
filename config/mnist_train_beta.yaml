@@ -15,7 +15,7 @@ init_weights_with_prior: True  # Only works when train_prior is True
 test_weight_std: null
 
 alpha: 1
-beta: 0.01
+beta: 1
 delta: 0.05
 # kl_penalty: 0.0001
 kl_penalty: 1
@@ -33,7 +33,7 @@ pz_config:
     num_components: 500
     pseudoinputs_std: 0.01
 
-device: cuda:3
+device: cuda:0
 dataset: mnist
 binarize: False
 validate: True  # True if type not in ["classic", "quad"]
@@ -46,13 +46,13 @@ final_test_batch_size: 20
 
 train_config:
     prior_std: 0.01
-    max_epochs: 1500
+    max_epochs: 150
     lr: 1e-3
     type: beta-vae  # "beta-vae", "alpha-vae", "classic", "quad"
     pacbayes: null  # True if type in ["classic", "quad"]
 
 train_prior_config:
-    max_epochs: 500
+    max_epochs: 50
     lr: 1e-3
     dropout_p: 0.3
     type: beta-vae

@@ -96,9 +96,9 @@ def main(config):
     if config["test_weight_std"]:
         model.set_weight_std(config["test_weight_std"])
 
-    if not config["test"]:
-        if config["train_config"]["pacbayes"]:
-            trainer.eval_bound()
+    # if not config["test"]:
+    #     if config["train_config"]["pacbayes"]:
+    #         trainer.eval_bound()
 
     trainer.training = False
     train_loader, _, _, valid_loader, test_loader = setup_loaders(config, batch_size=config["final_test_batch_size"])

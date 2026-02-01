@@ -3,7 +3,7 @@ defaults:
   - globals
 #   - override hydra/launcher: submitit_slurm
 
-name: mnist_train
+name: ${beta}_${train_config.type}
 run: 0
 
 resume: null
@@ -33,7 +33,7 @@ pz_config:
     num_components: 500
     pseudoinputs_std: 0.01
 
-device: cuda:3
+device: cuda:1
 dataset: mnist
 binarize: False
 validate: null  # True if type not in ["classic", "quad"]
@@ -46,13 +46,13 @@ final_test_batch_size: 20
 
 train_config:
     prior_std: 0.01
-    max_epochs: 1000
+    max_epochs: 100
     lr: 1e-3
-    type: quad  # "beta-vae", "alpha-vae", "classic", "quad"
-    pacbayes: True  # True if type in ["classic", "quad"]
+    type: classic  # "beta-vae", "alpha-vae", "classic", "quad"
+    pacbayes: null  # True if type in ["classic", "quad"]
 
 train_prior_config:
-    max_epochs: 500
+    max_epochs: 50
     lr: 1e-3
     dropout_p: 0.3
     type: beta-vae
